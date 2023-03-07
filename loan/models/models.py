@@ -2,16 +2,25 @@
 
 from odoo import _, api, fields, models
 
-class Course(models.Model):
-    _name = 'openacademy.course'
+class LoanAmortization(models.Model):
+    _name = 'wgcc.amortization'
 
-    name = fields.Char(string="Title", required=True)
-    description = fields.Text()
+    employee_id = fields.Integer('Employee ID')
+    name = fields.Char('name')
+    loan_type = fields.Selection([
+        ('loan1', 'Loan1')
+    ], string='loan_type')
+    loan_amount = fields.Float('Loan Amount')
+    gross_amount = fields.Float('Gross Amount')
+    interest_rate = fields.Float('Interest Rate')
+    term_of_months = fields.Integer('Term of Months')
 
-class Session(models.Model):
-    _name = 'openacademy.session'
+    monthly_payment = fields.Float('Monthly Payment')
+    number_of_payment = fields.Integer('No. of Payments')
+    total_payment = fields.Integer('Total Payment')
+    total_interest = fields.Float('Total Interest')
 
-    name = fields.Char(required=True)
-    start_date = fields.Date()
-    duration = fields.Float(digits=(6, 2), help="Duration in days")
-    seats = fields.Integer(string="Number of seats")
+    share_capital = fields.Float('Share Capital')
+    description = fields.Char('Description')
+    other_loans = fields.Char('Other Loans')
+    amount = fields.Float('Amount')
