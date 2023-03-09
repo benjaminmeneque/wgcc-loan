@@ -24,3 +24,4 @@ class LoanAmortization(models.Model):
     description = fields.Char('Description')
     other_loans = fields.Char('Other Loans')
     amount = fields.Float('Amount')
+
