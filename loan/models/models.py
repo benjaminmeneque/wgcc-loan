@@ -21,6 +21,6 @@ class LoanAmortization(models.Model):
     total_interest = fields.Float('Total Interest')
 
     share_capital = fields.Float('Share Capital')
-    description = fields.Char('Description')
+    description = fields.Text('Description')
     other_loans = fields.Char('Other Loans')
     amount = fields.Float('Amount')
