@@ -12,6 +12,12 @@
      <menuitem id="amortization_menu" name="Amortization" parent="loan_menu"
                action="amortization_action"/>
 
+
+    <menuitem id="loan_menu2" name="Loan Application"
+               parent="main_loan_menu" action="loanapplication_action"/>
+
+
+
     </data>
 
 </odoo>
