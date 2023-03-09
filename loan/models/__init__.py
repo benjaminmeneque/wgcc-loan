@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import loan_amortization
+from . import models
+from . import loan_application
