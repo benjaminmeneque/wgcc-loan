@@ -11,6 +11,6 @@
             action="amortization_action" />
 
         <menuitem id="loan_menu2" name="Loan Application" parent="loan_menu"
-            action="loan.application_action" />
+            action="application_action" />
     </data>
 </odoo>

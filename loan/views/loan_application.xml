@@ -63,6 +63,32 @@
 
                         </group>
 
+                        <group name="Previous Loan" string="Previous Loan">
+                            <group>
+                                <field name="previous_loan_no" />
+                                <field name="previous_loan_type" />
+                                <field name="previous_gross_amount" />
+                                <field name="previous_released_date" />
+                                
+                            </group>
+
+                            <group>
+                                <field name="previous_existing_balance" />
+                                <field name="previous_deferred_balance" />
+                                <field name="previous_terms_in_mos" />
+                                <field name="previous_monthly_armotization" />
+                                
+                            </group>
+
+                            <group>
+                                <field name="encoded_by" />
+                                <field name="date_encoded" />
+
+                                
+                            </group>
+
+                        </group>
+
                     </sheet>
                 </form>
             </field>
@@ -81,7 +107,7 @@
         <!-- </record> -->
 
         <!-- window action -->
-        <record model="ir.actions.act_window" id="loan.application_action">
+        <record model="ir.actions.act_window" id="application_action">
             <field name="name">Loan_Application</field>
             <field name="res_model">wgcc.loanapplication</field>
             <field name="view_type">form</field>
