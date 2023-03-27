@@ -6,7 +6,8 @@ from odoo.exceptions import ValidationError
 class LoanAmortization(models.Model):
     _name = 'wgcc.amortization'
 
-    name = fields.Many2one('hr.employee', string='employee ID')
+    name = fields.Many2one('hr.employee', string='name')
+    emp_id = fields.Char('employee ID')
     loan_type = fields.Many2one('wgcc.loan.type', string="Loan Type")
     loan_amount = fields.Float('Loan Amount')
     gross_amount = fields.Float('Gross Amount')
@@ -29,8 +30,13 @@ class LoanAmortization(models.Model):
    
     preview = fields.Html('')
 
+    @api.onchange('name')
+    def _onchange_name(self):
+        for employee in self.name:
+            self.emp_id = employee.identification_id
+
     @api.onchange('term_of_months')
-    def _onchange_(self):
+    def _onchange_term_of_months(self):
         if self.term_of_months > self.loan_type.maximum_loan_term:
             raise ValidationError("Terms of months should not be greater than maximum term")
         if self.term_of_months < self.loan_type.minimum_loan_term:
@@ -48,29 +54,9 @@ class LoanAmortization(models.Model):
         docs = self.env['wgcc.amortization'].browse(docids)
         data = {'docs': docs}
 
-        # Add the company_name field to the data dictionary
-        # for doc in docs:
-        #     data.update({
-        #         'company_name': doc.company_name,
-        #     })
-
-        # Render the report and save the result in the preview field
         html = report.render(data)
         self.preview = html
         return True
     
     def clear(self):
         self.preview = ""
-       
-
-
-class Employee(models.Model):
-    _inherit = 'hr.employee'
-
-    @api.multi
-    def name_get(self):
-        res = []
-        for employee in self:
-            name = employee.identification_id or employee.name
-            res.append((employee.id, name))
-        return res

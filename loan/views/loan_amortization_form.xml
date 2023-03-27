@@ -18,6 +18,8 @@
                                 <group name="Details Loan" string="Details Loan" colspan="2">
                                     <field name="name"
                                         options="{'no_open': True, 'no_create_edit': True, 'no_create':True}" />
+                                    <field name="emp_id"
+                                        readonly="1"/>
                                     <field name="loan_type"
                                         options="{'no_open': True, 'no_create_edit': True, 'no_create':True}" />
                                     <field name="loan_amount" />
