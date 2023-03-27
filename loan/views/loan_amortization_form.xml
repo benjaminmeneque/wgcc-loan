@@ -7,39 +7,49 @@
             <field name="model">wgcc.amortization</field>
             <field name="arch" type="xml">
                 <form string="Amortization Form">
+                    <header>
+                        <button string="Generate Amortization" name="generate_preview" type="object"
+                            class="oe_highlight" />
+                        <button string="clear" name="clear" type="object" class="oe_highlight" />
+                    </header>
                     <sheet>
-                        <group name="Details Loan" string="Details Loan">
-                            <field name="employee_id" />
-                            <field name="name" />
-                            <field name="loan_type" />
-                            <field name="loan_amount" />
-                            <field name="gross_amount" />
-                            <field name="interest_rate" />
-                            <field name="term_of_months" />
-                        </group>
-                        <group name="Summary" string="Summary">
-                            <field name="monthly_payment" />
-                            <field name="number_of_payment" />
-                            <field name="total_payment" />
-                            <field name="total_interest" />
-                        </group>
-                        <group name="Less" string="Less">
-                            <field name="less_ids" nolabel="1">
-                                <tree editable="top">
+                        <group>
+                            <group>
+                                <group name="Details Loan" string="Details Loan" colspan="2">
+                                    <field name="name"
+                                        options="{'no_open': True, 'no_create_edit': True, 'no_create':True}" />
+                                    <field name="loan_type"
+                                        options="{'no_open': True, 'no_create_edit': True, 'no_create':True}" />
+                                    <field name="loan_amount" />
+                                    <field name="gross_amount" />
+                                    <field name="interest_rate"
+                                        options="{'no_open': True, 'no_create_edit': True, 'no_create':True}" />
+                                    <field name="term_of_months" />
+                                </group>
+                                <group name="Summary" string="Summary" colspan="2">
+                                    <field name="monthly_payment" />
+                                    <field name="number_of_payment" />
+                                    <field name="total_payment" />
+                                    <field name="total_interest" />
+                                </group>
+
+                                <group name="Less" string="Less">
                                     <field name="share_capital" />
                                     <field name="description" />
                                     <field name="other_loans" />
+                                    <field name="savings" />
                                     <field name="amount" />
-                                </tree>
-                            </field>
-                        </group>
-                        <group name="Other" string="Other">
-                            <field name="other_ids" nolabel="1">
-                                <tree editable="top">
+                                </group>
+
+                                <group name="Other" string="Other">
                                     <field name="description" />
                                     <field name="amount" />
-                                </tree>
-                            </field>
+                                </group>
+                            </group>
+
+                            <group name="box" style="border: 2px solid red;height: 80rem;">
+                                <field name="preview" nolabel="1" readonly="1" />
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -62,7 +72,7 @@
             <field name="name">Amortization</field>
             <field name="res_model">wgcc.amortization</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">form,tree</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Create the first loan amortization

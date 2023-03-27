@@ -20,13 +20,21 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','hr','wgcc'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        
         'views/loan_amortization_form.xml',
-        'views/menu.xml',
         'views/loan_application.xml',
+        'views/loan_interest_rate.xml',
+        'views/menu.xml',
+
+        'reports/report_config.xml',
+        'reports/loan_amortization_report.xml',
+        'reports/loan_dataentry_report.xml',
+        
+
     ],
 }
